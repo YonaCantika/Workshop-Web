@@ -1,0 +1,58 @@
+body {
+  /* padding: 50px; */
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+a {
+  color: #00B7FF;
+}
+
+.card-registration select.form-control-lg {
+  font-size: 1rem;
+  padding: 10px;
+  border-radius: 8px;
+  border: 2px solid #ced4da;
+  background-color: #f8f9fa;
+  transition: all 0.3s ease;
+
+  /* Hapus panah default */
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  width: 100%;
+  /* Pastikan lebar penuh */
+  padding-right: 40px;
+  /* Tambah ruang untuk panah kustom */
+  cursor: pointer;
+}
+
+.card-registration select.form-control-lg:focus {
+  border-color: #007bff;
+  box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+  outline: none;
+}
+
+.card-registration .select-label {
+  font-weight: bold;
+  margin-top: 10px;
+  display: block;
+  font-size: 1.1rem;
+  color: #495057;
+}
+
+.card-registration .select-input {
+  position: relative;
+  width: 100%;
+}
+
+.card-registration .select-arrow {
+  position: absolute;
+  top: 50%;
+  right: 15px;
+  transform: translateY(-50%);
+  pointer-events: none;
+  /* Agar tidak bisa diklik */
+  font-size: 1.2rem;
+  color: #6c757d;
+}
