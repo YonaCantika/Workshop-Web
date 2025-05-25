@@ -1,44 +1,5 @@
-/********************************************************
-    Template Name: materialize
-    Created By: TrendyTheme
-    Envato Profile: https://themeforest.net/user/trendytheme
-    Website: http://trendytheme.net
-    Version: 1.5
-    Support: http://trendytheme.net/support
-*********************************************************/
-
-
-
-/*
-====================================
-[ CSS TABLE CONTENT ]
-------------------------------------
-    1.0 - General
-    2.0 - Typography
-    3.0 - Global Style
-    4.0 - Color Presets
-    5.0 - Overlay css
-    6.0 - Hero css
-    7.0 - Background Banner
-    8.0 - 404 page
-    9.0 - Author Wrapper
-    10.0 - Progress bar
-    11.0 - Clients
-    12.0 - Gallery Thumb
-    13.0 - Material CSS Customization
-    14.0 - Social Icon Animation
-    15.0 - device mockup carousel
-    16.0 - Search Style
-    17.0 - Preloader
-
--------------------------------------
-[ END CSS TABLE CONTENT ]
-=====================================
-*/
-
-
 /* Import css files */
-@import url("assets/fonts/flaticon/flaticon.css");
+@import url("/assets/fonts/flaticon/flaticon.css");
 
 /* Google Web Fonts */
 @import url(https://fonts.googleapis.com/css?family=Roboto:400,300,500,700,900);
@@ -2546,4 +2507,281 @@ KEY FRAME
 
 #preloader .progress .indeterminate {
   background: #03a9f4;
+}
+
+
+/* Profile Style */
+/* Scoped styles with unique prefix to avoid conflicts with existing CSS */
+.profile-settings-container {
+  max-width: 960px;
+  margin: 24px auto;
+  padding: 0 16px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 32px;
+  color: #050505;
+  background-color: #fff;
+}
+
+/* Left panel */
+.profile-settings-left {
+  flex: 1 1 280px;
+  max-width: 280px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.profile-settings-pic-wrapper {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin-bottom: 16px;
+}
+
+.profile-settings-pic-wrapper img {
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.profile-settings-emoji-button {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  background: #fff;
+  border: 1px solid #dddfe2;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  font-size: 18px;
+  line-height: 32px;
+  text-align: center;
+  cursor: pointer;
+  color: #65676b;
+  border: 1px solid #dddfe2;
+}
+
+.profile-settings-name {
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 22px;
+  margin: 0 0 4px 0;
+}
+
+.profile-settings-username {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 18px;
+  color: #8a8d91;
+  margin: 0 0 16px 0;
+}
+
+.profile-settings-edit-btn {
+  width: 100%;
+  max-width: 280px;
+  background: #f5f6f7;
+  border: 1px solid #dddfe2;
+  border-radius: 6px;
+  padding: 6px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #050505;
+  cursor: pointer;
+  text-align: center;
+  margin-bottom: 24px;
+}
+
+.profile-settings-logout-btn {
+  width: 100%;
+  max-width: 280px;
+  background: #f5f6f7;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  color: #050505;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  border: none;
+}
+
+.profile-settings-logout-btn i {
+  font-size: 18px;
+  color: #65676b;
+}
+
+/* Right panel */
+.profile-settings-right {
+  flex: 2 1 600px;
+  max-width: 600px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.profile-settings-section-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 0 12px 0;
+  color: #050505;
+}
+
+.profile-settings-settings-cards {
+  display: flex;
+  gap: 16px;
+  flex-wrap: nowrap;
+  /* changed from wrap to nowrap to keep cards in one row */
+}
+
+.profile-settings-card {
+  background: #f0f2f5;
+  border-radius: 12px;
+  flex: 1 1 0;
+  min-width: 0;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  cursor: default;
+}
+
+.profile-settings-card-icon {
+  width: 40px;
+  height: 40px;
+}
+
+.profile-settings-card-icon img {
+  width: 40px;
+  height: 40px;
+  display: block;
+}
+
+.profile-settings-card-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0;
+  color: #050505;
+}
+
+.profile-settings-card-desc {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #65676b;
+  margin: 0;
+  font-style: italic;
+}
+
+/* Search other section */
+.profile-settings-search-other-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.profile-settings-search-item {
+  background: #f0f2f5;
+  border-radius: 12px;
+  padding: 12px 16px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  cursor: default;
+  position: relative;
+}
+
+.profile-settings-search-icon {
+  flex-shrink: 0;
+  width: 48px;
+  height: 48px;
+}
+
+.profile-settings-search-icon img {
+  width: 48px;
+  height: 48px;
+  display: block;
+}
+
+.profile-settings-search-texts {
+  flex-grow: 1;
+}
+
+.profile-settings-search-title {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 18px;
+  margin: 0 0 4px 0;
+  color: #050505;
+}
+
+.profile-settings-search-desc {
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 16px;
+  color: #050505;
+  margin: 0;
+}
+
+.profile-settings-arrow-icon {
+  flex-shrink: 0;
+  font-size: 18px;
+  color: #65676b;
+  user-select: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .profile-settings-container {
+    flex-direction: column;
+    max-width: 100%;
+    margin: 16px auto;
+    padding: 0 12px;
+  }
+
+  .profile-settings-left,
+  .profile-settings-right {
+    max-width: 100%;
+    flex: 1 1 100%;
+  }
+
+  .profile-settings-settings-cards {
+    flex-direction: column;
+  }
+
+  .profile-settings-card {
+    min-width: auto;
+    width: 100%;
+  }
+
+  .profile-settings-search-item {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding-right: 36px;
+  }
+
+  .profile-settings-search-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-settings-search-icon img {
+    width: 40px;
+    height: 40px;
+  }
+
+  .profile-settings-arrow-icon {
+    position: absolute;
+    right: 16px;
+    top: 50%;
+    transform: translateY(-50%);
+  }
 }
