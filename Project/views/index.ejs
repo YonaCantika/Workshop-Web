@@ -23,7 +23,7 @@
             </h3>
             <p class="lead text-regular white-text">From Reliance to be Allegiance</p>
 
-            <a href="donasi.php" class="btn btn-lg pink waves-effect waves-light">Donasi Sekarang</a>
+            <!-- <a href="#" class="btn btn-lg pink waves-effect waves-light">Donasi Sekarang</a> -->
           </div>
         </div> <!-- row -->
         <br />
@@ -35,7 +35,9 @@
               </div>
               <div class="desc" style="color: white;">
                 <h2>Jumlah Campaign</h2>
-                <h2>1 </h2>
+                <h2>
+                  <%= jumlahAktif %>
+                </h2>
               </div>
             </div><!-- /.featured-item -->
           </div>
@@ -46,7 +48,8 @@
               </div>
               <div class="desc" style="color: white;">
                 <h2>Donasi Terkumpul</h2>
-                <h2>Rp 0 </h2>
+                <h2>Rp <%= totalDonasi %>
+                </h2>
               </div>
             </div><!-- /.featured-item -->
           </div>
@@ -57,7 +60,9 @@
               </div>
               <div class="white-text">
                 <h2>Jumlah Donatur</h2>
-                <h2>0</h2>
+                <h2>
+                  <%= totalDonatur %>
+                </h2>
               </div>
             </div><!-- /.featured-item -->
           </div>
@@ -77,140 +82,58 @@
       </div>
 
       <div class="row">
-        <div class="col-md-4">
-          <article class="post-wrapper">
+        <% data.forEach(function(item) { %>
+          <div class="col-md-4">
+            <article class="post-wrapper">
+              <div class="thumb-wrapper waves-effect waves-block waves-light">
+                <a href="#"><img src="assets/img/<%= item.foto_campaign %>" class="img-responsive" alt=""></a>
+              </div><!-- .post-thumb -->
 
-            <div class="thumb-wrapper waves-effect waves-block waves-light">
-              <a href="donasi.php"><img src="assets/img/pantiasuhan.jpg" class="img-responsive" alt=""></a>
-            </div><!-- .post-thumb -->
+              <div class="blog-content">
+                <header class="entry-header-wrapper">
+                  <div class="entry-header">
+                    <h2 class="entry-title"><a href="#">
+                        <%= item.judul %>
+                      </a></h2>
 
-            <div class="blog-content">
-              <header class="entry-header-wrapper">
-                <div class="entry-header">
-                  <h2 class="entry-title"><a href="donasi.php">Bantu kami mendirikan asrama untuk Panti Asuhan
-                      Assomadiyah</a></h2>
+                    <div class="entry-meta">
+                      <ul class="list-inline">
+                        <li>
+                          <i class="fa fa-user"></i>Rp.
+                          <%= item.target_dana %>
+                            <!-- nantinya count yang berdonasi -->
+                        </li>
+                        <li>
+                          <i class="fa fa-clock-o"></i>
+                          <%= item.tanggal_berakhir %>
+                        </li>
+                      </ul>
+                    </div><!-- .entry-meta -->
+                  </div><!-- /.entry-header -->
+                </header><!-- /.entry-header-wrapper -->
 
-                  <div class="entry-meta">
-                    <ul class="list-inline">
-                      <li>
-                        <i class="fa fa-user"></i> Reliance Generation
-                      </li>
-                      <li>
-                        <i class="fa fa-clock-o"></i> 30 Maret, 2017
-                      </li>
-                    </ul>
-                  </div><!-- .entry-meta -->
-                </div><!-- /.entry-header -->
-              </header><!-- /.entry-header-wrapper -->
+                <div class="entry-content">
+                  <p>
+                    <%= item.deskripsi %>
+                  </p>
+                </div><!-- .entry-content -->
 
-              <div class="entry-content">
-                <p>Bantu Panti Asuhan As-Somadiyah untuk meningkatkan kualitas pendidikan bagi Yatim Piatu. Ciptakan
-                  masa depan yatim piatu yang cerah hingga mengenyam pendidikan tingggi.</p>
-              </div><!-- .entry-content -->
-
-              <footer class="entry-footer">
-                <ul class="list-inline pull-left">
-                  <!--  <li><a href="#"><i class="fa fa-heart-o"></i> 20</a></li>
+                <footer class="entry-footer">
+                  <ul class="list-inline pull-left">
+                    <!--  <li><a href="#"><i class="fa fa-heart-o"></i> 20</a></li>
                                  <li><a href="#"><i class="fa fa-comments"></i> 20</a></li>
                                  <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li> -->
-                  <li>Dana Terkumpul</li>
-                </ul>
-                <div class="readmore pull-right">Rp. 0 </div>
-              </footer>
+                    <li>Dana Terkumpul</li>
+                  </ul>
+                  <div class="readmore pull-right">Rp. <%= item.dana_terkumpul %>
+                  </div>
+                </footer>
 
-            </div><!-- /.blog-content -->
+              </div><!-- /.blog-content -->
 
-          </article><!-- /.post-wrapper -->
-        </div><!-- /.col-md-4 -->
-
-        <div class="col-md-4">
-          <article class="post-wrapper">
-
-            <div class="thumb-wrapper waves-effect waves-block waves-light">
-              <a href="#"><img src="assets/img/sekolahtahfidz.png" class="img-responsive" alt=""></a>
-            </div><!-- .post-thumb -->
-
-            <div class="blog-content">
-              <header class="entry-header-wrapper">
-                <div class="entry-header">
-                  <h2 class="entry-title"><a href="#">Bantu Kami Mendirikan Asrama Rumah Tahfidz Dhuafa </a></h2>
-
-                  <div class="entry-meta">
-                    <ul class="list-inline">
-                      <li>
-                        <i class="fa fa-user"></i> Reliance Generation
-                      </li>
-                      <li>
-                        <i class="fa fa-clock-o"></i> Coming Soon
-                      </li>
-                    </ul>
-                  </div><!-- .entry-meta -->
-                </div><!-- /.entry-header -->
-              </header><!-- /.entry-header-wrapper -->
-
-              <div class="entry-content">
-                <p>Rumah Tahfidz yang kami dirikan adalah tindak lanjut dari program di SMP IT Darrul Maghfiroh yang
-                  mengutakamakan pendidikan untuk kaum dhuafa dan yatim piatu. </p>
-              </div><!-- .entry-content -->
-
-              <footer class="entry-footer">
-                <ul class="list-inline pull-left">
-                  <li>Dana Terkumpul</li>
-
-                </ul>
-                <div class="readmore pull-right" href="#">Rp. 0</div>
-              </footer>
-
-            </div><!-- /.blog-content -->
-
-          </article><!-- /.post-wrapper -->
-        </div><!-- /.col-md-4 -->
-
-        <div class="col-md-4">
-          <article class="post-wrapper">
-
-            <div class="thumb-wrapper waves-effect waves-block waves-light">
-              <a href="#"><img src="assets/img/al-mizan.jpg" class="img-responsive" alt=""></a>
-            </div><!-- .post-thumb -->
-
-            <div class="blog-content">
-              <header class="entry-header-wrapper">
-                <div class="entry-header">
-                  <h2 class="entry-title"><a href="#">Beasiswa Santri Al-Mizan untuk santri berprestasi dan kurang
-                      mampu</a></h2>
-
-                  <div class="entry-meta">
-                    <ul class="list-inline">
-                      <li>
-                        <i class="fa fa-user"></i> <a href="#">Reliance Generation</a>
-                      </li>
-                      <li>
-                        <i class="fa fa-clock-o"></i> <a href="#">Coming Soon</a>
-                      </li>
-                    </ul>
-                  </div><!-- .entry-meta -->
-                </div><!-- /.entry-header -->
-              </header><!-- /.entry-header-wrapper -->
-
-              <div class="entry-content">
-                <p>Mari kita bantu para santri-santri Al-Mizan yang kurang mampu untuk menimba Ilmu di Pondok
-                  Pesantren Modern Al-Mizan</p>
-              </div><!-- .entry-content -->
-
-              <footer class="entry-footer">
-                <ul class="list-inline pull-left">
-                  <!-- <li><a href="#"><i class="fa fa-heart-o"></i> 20</a></li>
-                                 <li><a href="#"><i class="fa fa-comments"></i> 20</a></li>
-                                 <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li> -->
-                  <li>Dana Terkumpul</li>
-                </ul>
-                <div class="readmore pull-right" href="#">Rp. 0</div>
-              </footer>
-
-            </div><!-- /.blog-content -->
-
-          </article><!-- /.post-wrapper -->
-        </div><!-- /.col-md-4 -->
+            </article><!-- /.post-wrapper -->
+          </div><!-- /.col-md-4 -->
+          <% }); %>
       </div><!-- /.row -->
 
     </div><!-- /.container -->
@@ -222,7 +145,7 @@
       <div class="text-center">
         <h1 class="text-uppercase text-bold font-30">Jadilah Donatur</h1>
         <p class=" text-bold font-20">Bersedekah membuat kita semakin kaya </p>
-        <a href="donasi.php" class="btn btn-lg pink waves-effect waves-light">Donasi Sekarang</a>
+        <a href="/all" class="btn btn-lg pink waves-effect waves-light">Show All Campaign</a>
       </div>
     </div><!-- /.container -->
   </section>
@@ -398,34 +321,6 @@
 
     </div><!-- /.container -->
   </section>
-  <section class="counter-section facts-two pre-banner-3 bg-fixed parallax-bg  overlay light-7"
-    data-stellar-background-ratio="0.5">
-    <div class="container">
-      <div class="row text-center">
-
-        <div class="col-sm-4 counter-wrap">
-          <i class="material-icons pink-text">&#xE7FB;</i>
-          <span class="timer">0</span>
-          <span class="count-description">Donatur</span>
-        </div><!-- /.col-sm-3 -->
-
-        <div class="col-sm-4 counter-wrap">
-          <p class="pink-text font-30">Rp</p>
-          <span class="timer">
-            <?PHP //echo number_format(1000000, 0, ".", ".");?>0
-          </span>
-          <span class="count-description">Dana terkumpul</span>
-        </div><!-- /.col-sm-3 -->
-
-        <div class="col-sm-4 counter-wrap">
-          <i class="material-icons pink-text">&#xE88A;</i>
-          <span class="timer">1</span>
-          <span class="count-description">Campaign</span>
-        </div><!-- /.col-sm-3 -->
-      </div>
-    </div><!-- /.container -->
-  </section>
-
   <!--footer 4 start -->
   <%- include('partials/_foot') %>
     <!--footer 4 end-->

@@ -1,0 +1,77 @@
+<%- include('../partials/admin/_head') %>
+    <div class="d-flex justify-content-between align-items-center mb-4 border-bottom pb-2">
+        <h1 class="text-primary fs-4 fw-normal m-0">The List</h1>
+    </div>
+    <section class="border rounded shadow-sm">
+        <div class="bg-primary text-white fw-semibold px-3 py-2 user-select-none">
+            Results data.
+        </div>
+        <div class="d-flex flex-wrap justify-content-between align-items-center bg-light border-bottom px-3 py-2">
+            <!-- <div class="d-flex align-items-center gap-2 text-secondary user-select-text">
+                <span>Display</span>
+                <select class="form-select form-select-sm w-auto" aria-label="Select number of records to display">
+                    <option>10</option>
+                    <option>25</option>
+                    <option>50</option>
+                    <option>100</option>
+                </select>
+                <span>records</span>
+            </div>
+            <div class="d-flex align-items-center gap-2">
+                <label for="searchInput" class="form-label mb-0 text-secondary user-select-text">Search:</label>
+                <input type="text" id="searchInput" class="form-control form-control-sm" aria-label="Search users" />
+            </div> -->
+        </div>
+        <div class="d-flex gap-1 px-3 py-2 border-bottom bg-white user-select-none table-toolbar">
+            <button type="button" class="btn btn-icon" title="Search" aria-label="Search">
+                <i class="fas fa-search text-primary"></i>
+            </button>
+            <button type="button" class="btn btn-icon" title="Print" aria-label="Print">
+                <i class="fas fa-print text-secondary"></i>
+            </button>
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered mb-0 text-nowrap align-middle">
+                <thead>
+                    <tr>
+                        <th scope="col" class="text-primary">
+                            S.NO. <i class="fas fa-sort text-secondary"></i>
+                        </th>
+                        <th scope="col">
+                            Username <i class="fas fa-sort text-secondary"></i>
+                        </th>
+                        <th scope="col">
+                            Nama <i class="fas fa-sort text-secondary"></i>
+                        </th>
+                        <th scope="col" class="text-primary">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% for(var i=0; i < data.length; i++){ %>
+                        <tr>
+                            <td class="text-primary fw-semibold">
+                                <%= (i+1) %>
+                            </td>
+                            <td>
+                                <%= data[i].username %>
+                            </td>
+                            <td>
+                                <%= data[i].nama %>
+                            </td>
+                            <td class="text-center">
+                                <button class="btn btn-link p-0 text-primary" title="View" aria-label="View user 3">
+                                    <i class="fas fa-search"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-success" title="Edit" aria-label="Edit user 3">
+                                    <i class="fas fa-pencil-alt"></i>
+                                </button>
+                                <button class="btn btn-link p-0 text-danger" title="Delete" aria-label="Delete user 3">
+                                    <i class="fas fa-trash"></i>
+                                </button>
+                            </td>
+                        </tr>
+                        <% } %>
+                </tbody>
+            </table>
+        </div>
+        <%- include('../partials/admin/_foot') %>

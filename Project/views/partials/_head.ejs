@@ -85,9 +85,12 @@
 
                     <!--mega menu start-->
                     <ul class="menuzord-menu pull-right light">
-                        <li class="active"><a href="#">Home</a></li>
-                        <!-- <li><a href="#" class="waves-effect waves-light">Donasi</a></li> -->
-                        <li><a href="#" class="waves-effect waves-light">Login</a></li>
+                        <li class="active"><a href="/">Home</a></li>
+                        <% if (user) { %>
+                            <li class="active"><a href="/users" class="waves-effect waves-light">Profile</a></li>
+                            <% } else { %>
+                                <li><a href="/login" class="waves-effect waves-light">Login</a></li>
+                                <% } %>
                     </ul>
                     <!--mega menu end-->
 

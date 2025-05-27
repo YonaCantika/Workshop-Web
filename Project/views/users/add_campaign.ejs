@@ -1,0 +1,60 @@
+<%- include('../partials/users/_head') %>
+    <main class="profile-page" role="main">
+        <section aria-label="Settings and other options" class="right-panel">
+            <div class="container">
+                <div class="text-center mb-30">
+                    <h2 class="section-title">Pengajuan Campaign</h2>
+                    <p class="section-sub">Buat pengajuan campaign sebenar-benarnya </p>
+                </div>
+                <form action="/mahasiswa/store" method="post">
+                    <input type="hidden">
+                    <div class="row">
+                        <div class="col-md-12 mb-4">
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="isi">Deskripsi</label>
+                                <textarea name="deskripsi" id="isi" class="form-control form-control-lg" rows="4"
+                                    style="resize: vertical;"></textarea>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="firstName">Judul</label>
+                                <input type="text" name="judul" id="firstName" class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="lastName">Target Dana</label>
+                                <input type="text" name="target_dana" id="lastName"
+                                    class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                            <div data-mdb-input-init class="form-outline datepicker w-100">
+                                <label for="birthdayDate" class="form-label">Tanggal Berakhir</label>
+                                <input type="date" name="tanggal_berakhir" class="form-control form-control-lg"
+                                    id="birthdayDate" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="daba">Dana Terkumpul</label>
+                                <input type="text" name="dana_terkumpul" id="daba"
+                                    class="form-control form-control-lg" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="mt-1 pt-1">
+                        <input data-mdb-ripple-init class="btn btn-primary btn-lg" type="submit" value="Submit" />
+                    </div>
+                </form>
+        </section>
+    </main>

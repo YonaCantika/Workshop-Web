@@ -94,7 +94,9 @@
                     <!--mega menu start-->
                     <ul class="menuzord-menu pull-right">
                         <li><a href="/">Home</a></li>
-                        <li class="active"><a href="/user" class="waves-effect waves-light">Profile</a></li>
+                        <% if (user) { %>
+                            <li class="active"><a href="/users" class="waves-effect waves-light">Profile</a></li>
+                            <% } %>
                     </ul>
                     <!--mega menu end-->
 

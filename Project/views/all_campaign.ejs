@@ -1,0 +1,70 @@
+<%- include('partials/all_campaign/_head') %>
+    <!-- Grid News -->
+    <section class="section-padding grid-news">
+        <div class="container">
+
+            <div class="text-center mb-30">
+                <h2 class="section-title">All Campaign</h2>
+                <p class="section-sub">Pilih dan salurkan donasi untuk campaign yang berarti bagi Anda. </p>
+            </div>
+
+            <div class="row">
+                <% data.forEach(function(item) { %>
+                    <div class="col-md-4">
+                        <article class="post-wrapper">
+                            <div class="thumb-wrapper waves-effect waves-block waves-light">
+                                <a href="#"><img src="assets/img/<%= item.foto_campaign %>" class="img-responsive"
+                                        alt=""></a>
+                            </div><!-- .post-thumb -->
+
+                            <div class="blog-content">
+                                <header class="entry-header-wrapper">
+                                    <div class="entry-header">
+                                        <h2 class="entry-title"><a href="#">
+                                                <%= item.judul %>
+                                            </a></h2>
+
+                                        <div class="entry-meta">
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <i class="fa fa-user"></i>Rp.
+                                                    <%= item.target_dana %>
+                                                        <!-- nantinya count yang berdonasi -->
+                                                </li>
+                                                <li>
+                                                    <i class="fa fa-clock-o"></i>
+                                                    <%= item.tanggal_berakhir %>
+                                                </li>
+                                            </ul>
+                                        </div><!-- .entry-meta -->
+                                    </div><!-- /.entry-header -->
+                                </header><!-- /.entry-header-wrapper -->
+
+                                <div class="entry-content">
+                                    <p>
+                                        <%= item.deskripsi %>
+                                    </p>
+                                </div><!-- .entry-content -->
+
+                                <footer class="entry-footer">
+                                    <ul class="list-inline pull-left">
+                                        <!--  <li><a href="#"><i class="fa fa-heart-o"></i> 20</a></li>
+                                 <li><a href="#"><i class="fa fa-comments"></i> 20</a></li>
+                                 <li><a href="#"><i class="fa fa-share-alt"></i> Share</a></li> -->
+                                        <li>Dana Terkumpul</li>
+                                    </ul>
+                                    <div class="readmore pull-right">Rp. <%= item.dana_terkumpul %>
+                                    </div>
+                                </footer>
+
+                            </div><!-- /.blog-content -->
+
+                        </article><!-- /.post-wrapper -->
+                    </div><!-- /.col-md-4 -->
+                    <% }); %>
+            </div><!-- /.row -->
+
+        </div><!-- /.container -->
+    </section>
+    <!-- Grid News End -->
+    <%- include('partials/users/_foot') %>

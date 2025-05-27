@@ -9,6 +9,9 @@ var session = require('express-session');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var loginRouter = require('./routes/login');
+var adminRouter = require('./routes/admin');
+var allRouter = require('./routes/all');
 
 var app = express();
 
@@ -32,12 +35,21 @@ app.use(session({
   saveUninitialized: true,
   resave: 'true',
   secret: 'secret'
-}))
+}));
+
+// Middleware global agar 'user' tersedia di semua template
+app.use(function (req, res, next) {
+  res.locals.user = req.session.user || null;
+  next();
+});
 
 app.use(flash());
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/login', loginRouter);
+app.use('/admin', adminRouter);
+app.use('/all', allRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
