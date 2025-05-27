@@ -6,12 +6,12 @@
                     <h2 class="section-title">Pengajuan Campaign</h2>
                     <p class="section-sub">Buat pengajuan campaign sebenar-benarnya </p>
                 </div>
-                <form action="/mahasiswa/store" method="post">
+                <form action="/users/add_campaign" method="post" enctype="multipart/form-data">
                     <input type="hidden">
                     <div class="row">
                         <div class="col-md-12 mb-4">
                             <div data-mdb-input-init class="form-outline">
-                                <label class="form-label" for="isi">Deskripsi</label>
+                                <label class="form-label" for="isi" style="font-size: 1.1rem ;">Deskripsi</label>
                                 <textarea name="deskripsi" id="isi" class="form-control form-control-lg" rows="4"
                                     style="resize: vertical;"></textarea>
                             </div>
@@ -22,14 +22,14 @@
                         <div class="col-md-6 mb-4">
 
                             <div data-mdb-input-init class="form-outline">
-                                <label class="form-label" for="firstName">Judul</label>
+                                <label class="form-label" for="firstName" style="font-size: 1.1rem ;">Judul</label>
                                 <input type="text" name="judul" id="firstName" class="form-control form-control-lg" />
                             </div>
                         </div>
                         <div class="col-md-6 mb-4">
 
                             <div data-mdb-input-init class="form-outline">
-                                <label class="form-label" for="lastName">Target Dana</label>
+                                <label class="form-label" for="lastName" style="font-size: 1.1rem ;">Target Dana</label>
                                 <input type="text" name="target_dana" id="lastName"
                                     class="form-control form-control-lg" />
                             </div>
@@ -37,7 +37,8 @@
                         <div class="col-md-6 mb-4 d-flex align-items-center">
 
                             <div data-mdb-input-init class="form-outline datepicker w-100">
-                                <label for="birthdayDate" class="form-label">Tanggal Berakhir</label>
+                                <label for="birthdayDate" class="form-label" style="font-size: 1.1rem ;">Tanggal
+                                    Berakhir</label>
                                 <input type="date" name="tanggal_berakhir" class="form-control form-control-lg"
                                     id="birthdayDate" />
                             </div>
@@ -45,9 +46,8 @@
                         <div class="col-md-6 mb-4">
 
                             <div data-mdb-input-init class="form-outline">
-                                <label class="form-label" for="daba">Dana Terkumpul</label>
-                                <input type="text" name="dana_terkumpul" id="daba"
-                                    class="form-control form-control-lg" />
+                                <label class="form-label" for="daba" style="font-size: 1.1rem ;">Foto Campaign</label>
+                                <input type="file" name="foto_campaign" id="daba" accept="image/*" />
                             </div>
                         </div>
                     </div>

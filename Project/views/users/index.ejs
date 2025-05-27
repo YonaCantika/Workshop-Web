@@ -16,49 +16,74 @@
             <!-- <button class="edit-profile-btn" type="button">
                 Edit profile
             </button> -->
-            <button class="logout-btn" type="button">
-                <i aria-hidden="true" class="fas fa-sign-out-alt">
-                </i>
-                Keluar
-            </button>
+            <a href="/login/logout" class="logout-btn">
+                <i aria-hidden="true" class="fas fa-sign-out-alt"></i>
+                Logout
+            </a>
         </section>
         <section aria-label="Settings and other options" class="right-panel">
             <h2 class="section-title">
                 Setting Accounts
             </h2>
-            <div class="settings-cards">
-                <article aria-label="Pembokiran setting" class="card" tabindex="0">
-                    <div class="card-icon">
-                        <a href="users/add">
-                            <img alt="Icon of a person with a prohibition sign" height="40"
-                                src="https://storage.googleapis.com/a1aa/image/204ac8ae-9954-48fe-0431-a97d923c1e58.jpg"
-                                width="40" />
-                        </a>
-                    </div>
-                    <h3 class="card-title">
-                        Ajukan Campaign
-                    </h3>
-                    <p class="card-desc">
-                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, dolor excepturi corrupti
-                        commodi suscipit tempore!
-                    </p>
-                </article>
-                <article aria-label="Log aktivitas setting" class="card" tabindex="0">
-                    <div class="card-icon">
-                        <a href="">
-                            <img alt="Icon of a paper with a pencil" height="40"
-                                src="https://storage.googleapis.com/a1aa/image/204ac8ae-9954-48fe-0431-a97d923c1e58.jpg"
-                                width="40" />
-                        </a>
-                    </div>
-                    <h3 class="card-title">
-                        Log aktivitas
-                    </h3>
-                    <p class="card-desc">
-                        Lihat dan kelola aktivitas donasi Anda dalam website BantuTeman.
-                    </p>
-                </article>
-            </div>
+            <% if(messages.success){ %>
+                <div class="alert alert-success" role="alert">
+                    <%- messages.success %>
+                </div>
+                <% } %>
+                    <% if(messages.error){ %>
+                        <div class="alert alert-danger" role="alert">
+                            <%- messages.error %>
+                        </div>
+                        <% } %>
+                            <div class="settings-cards">
+                                <article aria-label="Pembokiran setting" class="card" tabindex="0">
+                                    <div class="card-icon">
+                                        <a href="users/add">
+                                            <img alt="Icon of a person with a prohibition sign" height="40"
+                                                src="https://storage.googleapis.com/a1aa/image/204ac8ae-9954-48fe-0431-a97d923c1e58.jpg"
+                                                width="40" />
+                                        </a>
+                                    </div>
+                                    <h3 class="card-title">
+                                        Ajukan Campaign
+                                    </h3>
+                                    <p class="card-desc">
+                                        Lorem ipsum, dolor sit amet consectetur adipisicing elit. Fugiat, dolor
+                                        excepturi corrupti
+                                        commodi suscipit tempore!
+                                    </p>
+                                </article>
+                                <article aria-label="Log aktivitas setting" class="card" tabindex="0">
+                                    <div class="card-icon">
+                                        <a href="users/log">
+                                            <img alt="Icon of a paper with a pencil" height="40"
+                                                src="https://storage.googleapis.com/a1aa/image/204ac8ae-9954-48fe-0431-a97d923c1e58.jpg"
+                                                width="40" />
+                                        </a>
+                                    </div>
+                                    <h3 class="card-title">
+                                        Log aktivitas
+                                    </h3>
+                                    <p class="card-desc">
+                                        Lihat dan kelola aktivitas donasi Anda dalam website BantuTeman.
+                                    </p>
+                                </article>
+                                <article aria-label="Log aktivitas setting" class="card" tabindex="0">
+                                    <div class="card-icon">
+                                        <a href="#">
+                                            <img alt="Icon of a paper with a pencil" height="40"
+                                                src="https://storage.googleapis.com/a1aa/image/204ac8ae-9954-48fe-0431-a97d923c1e58.jpg"
+                                                width="40" />
+                                        </a>
+                                    </div>
+                                    <h3 class="card-title">
+                                        Log Campaign
+                                    </h3>
+                                    <p class="card-desc">
+                                        Lihat pengajuan Campaign Anda dalam website BantuTeman.
+                                    </p>
+                                </article>
+                            </div>
         </section>
     </main>
 
