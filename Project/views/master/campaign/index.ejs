@@ -1,0 +1,135 @@
+<%- include('../../partials/master/_head') %>
+    <main class="min-h-screen flex flex-col overflow-y-auto sm:p-12" style="padding: 3rem 10% 0 10%;">
+        <div class="pt-[50%] sm:pt-[1rem]"></div>
+        <div class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
+            <%- include('../../partials/_message') %>
+                <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                    <h2 class="text-xl font-semibold text-gray-900">
+                        Campaign Overview
+                    </h2>
+                    <a href="/admin/campaign/create"
+                        class="flex items-center space-x-2 bg-blue-600 hover:bg-blue-700 text-white text-sm font-semibold px-4 py-2 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <i class="fas fa-plus">
+                        </i>
+                        <span>
+                            New Campaign
+                        </span>
+                    </a>
+                </div>
+                <div class="px-6 py-4 border-b border-gray-200 flex items-center justify-between">
+                    <form method="get" action="/admin/campaign" class="w-1/3">
+                        <label for="category" class="block text-sm font-medium text-gray-700 mb-1">
+                            Filter <span class="text-red-500">*</span>
+                        </label>
+                        <select id="category" name="status" onchange="this.form.submit()"
+                            class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition">
+                            <option value="" <%=selectedStatus==='' ? 'selected' : '' %>>All Campaigns</option>
+                            <option value="selesai" <%=selectedStatus==='selesai' ? 'selected' : '' %>>Selesai</option>
+                            <option value="aktif" <%=selectedStatus==='aktif' ? 'selected' : '' %>>Aktif</option>
+                            <option value="pending" <%=selectedStatus==='pending' ? 'selected' : '' %>>Pending</option>
+                            <option value="ditolak" <%=selectedStatus==='ditolak' ? 'selected' : '' %>>Ditolak</option>
+                        </select>
+                    </form>
+                </div>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200 text-base">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Judul</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Due Date</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Dana Terkumpul</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Target Dana</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Status</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    Date Created</th>
+                                <th
+                                    class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                    User</th>
+                                <th class="relative px-6 py-3"><span class="sr-only">Edit</span></th>
+                            </tr>
+                        </thead>
+                        <tbody class="bg-white divide-y divide-gray-200 text-lg">
+                            <% if (data.length===0) { %>
+                                <tr>
+                                    <td colspan="7" class="px-6 py-4 text-center text-gray-500 italic">
+                                        !! Tidak ada campaign <%= selectedStatus ? selectedStatus.toLowerCase() : '' %>.
+                                    </td>
+                                </tr>
+                                <% } else { %>
+                                    <% for(var i=0; i < data.length; i++){ %>
+                                        <tr class="hover:bg-blue-50 transition-colors duration-200">
+                                            <td class="px-6 py-4 whitespace-nowrap font-medium text-gray-900">
+                                                <%= data[i].judul %>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">
+                                                <%= data[i].tanggal_berakhir %>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">
+                                                Rp. <%= data[i].dana_terkumpul %>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">
+                                                Rp. <%= data[i].target_dana %>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap">
+                                                <% let status=data[i].status.toLowerCase(); let statusClass='' ; if
+                                                    (status==='aktif' ) { statusClass='bg-green-100 text-green-800' ; }
+                                                    else if (status==='pending' ) {
+                                                    statusClass='bg-yellow-100 text-yellow-800' ; } else if
+                                                    (status==='selesai' ) { statusClass='bg-blue-100 text-blue-800' ; }
+                                                    else if (status==='ditolak' ) {
+                                                    statusClass='bg-red-100 text-red-800' ; } else {
+                                                    statusClass='bg-gray-100 text-gray-800' ; } %>
+                                                    <span
+                                                        class="inline-flex px-3 py-1 text-sm font-semibold rounded-full <%= statusClass %>">
+                                                        <%= data[i].status %>
+                                                    </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-gray-600">
+                                                <%= data[i].tanggal_dibuat %>
+                                            </td>
+                                            <td
+                                                class="px-6 py-4 whitespace-nowrap text-gray-700 flex items-center space-x-3">
+                                                <img alt="Avatar of Yona" class="h-8 w-8 rounded-full object-cover"
+                                                    height="32"
+                                                    src="https://storage.googleapis.com/a1aa/image/e0c22a87-a16c-475a-f736-09692ea4c58b.jpg"
+                                                    width="32" />
+                                                <span>
+                                                    <%= data[i].nama %>
+                                                </span>
+                                            </td>
+                                            <td class="px-6 py-4 whitespace-nowrap text-right font-medium space-x-3">
+                                                <a href="/admin/campaign/edit/<%= data[i].id_campaign %>"
+                                                    aria-label="Edit"
+                                                    class="text-blue-600 hover:text-blue-900 focus:outline-none">
+                                                    <i class="fas fa-edit"></i>
+                                                </a>
+                                                <a href="/admin/campaign/delete/<%= data[i].id_campaign %>"
+                                                    aria-label="Delete"
+                                                    class="text-red-600 hover:text-red-900 focus:outline-none"
+                                                    onclick="return confirm('Apakah kamu yakin ingin menghapus campaign ini?');">
+                                                    <i class="fas fa-trash-alt"></i>
+                                                </a>
+
+                                            </td>
+                                        </tr>
+                                        <% } } %>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="px-6 py-4 border-t border-gray-200 text-gray-600 text-sm text-center">
+                    Showing 1 to 6 of 6 projects
+                </div>
+        </div>
+    </main>
+    <%- include('../../partials/master/_foot') %>

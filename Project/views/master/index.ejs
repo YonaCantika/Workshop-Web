@@ -1,0 +1,144 @@
+<%- include('../partials/master/_head') %>
+    <main class="min-h-screen flex flex-col overflow-y-auto sm:p-12" style="padding: 3rem 10% 0 10%;">
+        <div style="padding-top: 50px;"></div>
+        <!-- Welcome and stats -->
+        <section class="mb-8">
+            <h2 class="text-2xl font-semibold text-gray-900 mb-4">
+                Welcome back, <%= user.nama %>!
+            </h2>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Card 1 -->
+                <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+                    <div class="p-3 rounded-full bg-blue-100 text-blue-600 text-2xl">
+                        <i class="fas fa-users"></i>
+                    </div>
+                    <div>
+                        <p class="text-m font-medium text-gray-500"><a href="/admin/pengguna">Users</a></p>
+                        <p class="text-xl font-semibold text-gray-900">
+                            <%= rows.jumlah_user %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 2 -->
+                <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+                    <div class="p-3 rounded-full bg-green-100 text-green-600 text-2xl">
+                        <i class="fas fa-dollar-sign"></i>
+                    </div>
+                    <div>
+                        <p class="text-m font-medium text-gray-500"><a href="/admin/penyaluran">Penyaluran</a>
+                        </p>
+                        <p class="text-xl font-semibold text-gray-900">Rp. <%= rows.total_penyaluran %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 3 -->
+                <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+                    <div class="p-3 rounded-full bg-yellow-100 text-yellow-600 text-2xl">
+                        <i class="fas fa-shopping-cart"></i>
+                    </div>
+                    <div>
+                        <p class="text-m font-medium text-gray-500"><a href="/admin/campaign">Campaign</a></p>
+                        <p class="text-xl font-semibold text-gray-900">
+                            <%= rows.jumlah_campaign %>
+                        </p>
+                    </div>
+                </div>
+                <!-- Card 4 -->
+                <div class="bg-white rounded-lg shadow p-5 flex items-center space-x-4">
+                    <div class="p-3 rounded-full bg-red-100 text-red-600 text-2xl">
+                        <i class="fas fa-exclamation-triangle"></i>
+                    </div>
+                    <div>
+                        <p class="text-m font-medium text-gray-500"><a href="/admin/profile">Profile Saya</a></p>
+                        <p class="text-xl font-semibold text-gray-900">
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects table -->
+        <section class="bg-white rounded-lg shadow p-6">
+            <h3 class="text-xl font-semibold text-gray-900 mb-4">Projects</h3>
+            <div class="overflow-x-auto">
+                <table class="min-w-full divide-y divide-gray-200 text-base">
+                    <thead class="bg-gray-50">
+                        <tr>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                Judul</th>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                Due Date</th>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                Target Dana</th>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                Status</th>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                Date Created</th>
+                            <th
+                                class="px-6 py-3 text-left text-base font-medium text-gray-500 uppercase tracking-wider">
+                                User</th>
+                            <th class="relative px-6 py-3"><span class="sr-only">Edit</span></th>
+                        </tr>
+                    </thead>
+                    <tbody class="bg-white divide-y divide-gray-200 text-base">
+                        <% if (data.length===0) { %>
+                            <tr>
+                                <td colspan="7" class="px-6 py-4 text-center text-gray-500">
+                                    Belum ada pengajuan campaign.
+                                </td>
+                            </tr>
+                            <% } else { %>
+                                <% for (var i=0; i < data.length; i++) { %>
+                                    <tr>
+                                        <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-900">
+                                            <%= data[i].judul %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-500">
+                                            <%= data[i].tanggal_berakhir %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-lg font-medium text-gray-500">
+                                            Rp. <%= data[i].target_dana %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
+                                            <span
+                                                class="px-4 inline-flex text-sm leading-8 font-semibold rounded-full bg-yellow-100 text-yellow-800">
+                                                <%= data[i].status %>
+                                            </span>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-gray-500">
+                                            <%= data[i].tanggal_dibuat %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-gray-500">
+                                            <%= data[i].nama %>
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap text-right font-medium">
+                                            <a class="text-green-600 hover:text-green-900"
+                                                href="/admin/campaign/update-status/<%= data[i].id_campaign %>?status=aktif"
+                                                onclick="return confirm('Yakin ingin terima campaign ini?')">Terima</a>
+                                            |
+                                            <a class="text-red-600 hover:text-red-900"
+                                                href="/admin/campaign/update-status/<%= data[i].id_campaign %>?status=ditolak"
+                                                onclick="return confirm('Yakin ingin tolak campaign ini?')">Tolak</a>
+                                        </td>
+                                    </tr>
+                                    <% } %>
+                                        <% } %>
+                    </tbody>
+
+                </table>
+            </div>
+        </section>
+        <!-- Logout Button -->
+        <div class="flex justify-end mb-6" style="padding-top: 2rem;">
+            <a href="/login/logout"
+                class="text-red-600 hover:text-red-800 text-lg font-semibold flex items-center gap-1">
+                <i class="fas fa-sign-out-alt"></i> Logout
+            </a>
+        </div>
+    </main>
+    <%- include('../partials/master/_foot') %>

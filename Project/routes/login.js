@@ -15,17 +15,13 @@ router.post("/", function (req, res, next) {
   db.query(sql, [username], async function (err, results) {
     if (err) {
       console.error(err);
-      return res.render("login", {
-        title: "Login",
-        error: "Terjadi kesalahan server"
-      });
+      req.flash('error', 'Terjadi kesalahan server');
+      return res.redirect('/login'); // redirect supaya flash bisa tampil
     }
 
     if (results.length !== 1) {
-      return res.render("login", {
-        title: "Login",
-        error: "Username atau password salah, silakan coba lagi"
-      });
+      req.flash('error', 'Username atau password salah, silakan coba lagi');
+      return res.redirect('/login');
     }
 
     const user = results[0];
@@ -35,38 +31,33 @@ router.post("/", function (req, res, next) {
       if (valid) {
         req.session.user = user;
 
-        // Routing berdasarkan role
-        if (user.role === 'superadmin') {
+        if (user.role === 'superadmin' || user.role === 'admin') {
           return res.redirect("/admin");
         } else if (user.role === 'siswa') {
           return res.redirect("/users");
         } else {
-          return res.render("login", {
-            title: "Login",
-            error: "Role pengguna tidak dikenali"
-          });
+          req.flash('error', 'Role pengguna tidak dikenali');
+          return res.redirect('/login');
         }
-
       } else {
-        return res.render("login", {
-          title: "Login",
-          error: "Username atau password salah"
-        });
+        req.flash('error', 'Username atau password salah');
+        return res.redirect('/login');
       }
     } catch (err) {
       console.error(err);
-      return res.render("login", {
-        title: "Login",
-        error: "Terjadi kesalahan saat verifikasi password"
-      });
+      req.flash('error', 'Terjadi kesalahan saat verifikasi password');
+      return res.redirect('/login');
     }
   });
 });
+
 
 router.get("/logout", function (req, res) {
   req.session.destroy(() => {
     res.redirect("/");
   });
 });
+
+
 
 module.exports = router;

@@ -1,0 +1,79 @@
+<%- include('../partials/master/_head') %>
+    <!-- Main Content -->
+    <main class="min-h-screen flex flex-col overflow-y-auto sm:p-12" style="padding: 3rem 10% 0 10%;">
+        <div class="pt-[50%] sm:pt-[1rem]"></div>
+        <div class="w-full bg-white rounded-lg shadow-lg overflow-hidden">
+            <%- include('../partials/_message') %>
+                <form class="bg-white rounded-xl shadow-md p-8 space-y-8" action="/admin/update/<%= user.id_user %>"
+                    method="POST" novalidate>
+                    <div class="flex flex-col md:flex-row md:items-center md:space-x-8">
+                        <div class="flex-shrink-0 mx-auto md:mx-0">
+                            <img alt="User avatar profile picture of a young woman with short brown hair and green eyes smiling, wearing a casual blue shirt"
+                                class="w-56 h-56 rounded-full object-cover border-4 border-indigo-500" height="150"
+                                id="profileImage"
+                                src="https://storage.googleapis.com/a1aa/image/fa719b9c-c830-43ae-03c2-b3299267fdd4.jpg"
+                                width="200" />
+                            <!-- <label
+                            class="mt-3 block text-center text-indigo-600 cursor-pointer font-semibold hover:underline"
+                            for="imageUpload">
+                            Change Photo
+                        </label> -->
+                            <input accept="image/*" class="hidden" id="imageUpload" name="profileImage" type="file" />
+                        </div>
+                        <div class="mt-6 md:mt-0 flex-1 space-y-6">
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="fullName">
+                                    Name
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    id="fullName" name="nama" placeholder="Emily Johnson" required="" type="text"
+                                    value="<%= user.nama %>" />
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="email">
+                                    Email Address
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    id="email" name="email" placeholder="emily.johnson@example.com" required=""
+                                    type="email" value="<%= user.email %>" />
+                            </div>
+                            <div>
+                                <label class="block text-gray-700 font-semibold mb-2" for="phone">
+                                    Password Baru
+                                </label>
+                                <input
+                                    class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                    id="phone" name="password" placeholder="isi jika ingin mengubah password"
+                                    type="password" value="" />
+                            </div>
+                            <!-- <div>
+                            <label class="block text-gray-700 font-semibold mb-2" for="location">
+                                Location
+                            </label>
+                            <input
+                                class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:outline-none focus:ring-2 focus:ring-indigo-500"
+                                id="location" name="location" placeholder="San Francisco, CA, USA" type="text"
+                                value="San Francisco, CA, USA" />
+                        </div> -->
+                        </div>
+                    </div>
+                    <div class="pt-4 border-t border-gray-200 flex justify-between items-center">
+                        <a href="/admin/"
+                            class="bg-gray-200 hover:bg-gray-300 text-gray-800 font-semibold py-2 px-6 rounded-lg transition-colors">
+                            ← Back
+                        </a>
+                        <div class="flex space-x-4">
+                            <button
+                                class="bg-indigo-600 hover:bg-indigo-700 text-white font-semibold py-2 px-6 rounded-lg shadow-md transition-colors"
+                                type="submit" onclick="return confirm('Are you sure you want to save the changes?')">
+                                Save Changes
+                            </button>
+                        </div>
+                    </div>
+
+                </form>
+        </div>
+    </main>
+    <%- include('../partials/master/_foot') %>

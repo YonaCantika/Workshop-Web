@@ -26,12 +26,14 @@
     <title>Website Bantu Teman</title>
 
     <!--  favicon -->
-    <link rel="shortcut icon" href="assets/img/ico/favicon.png">
+    <link rel="shortcut icon" href="/assets/img/ico/favicon.png">
     <!--  apple-touch-icon -->
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="assets/img/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="assets/img/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="assets/img/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="assets/img/ico/apple-touch-icon-57-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144"
+        href="/assets/img/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114"
+        href="/assets/img/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="/assets/img/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="/assets/img/ico/apple-touch-icon-57-precomposed.png">
 
     <link href='https://fonts.googleapis.com/css?family=Raleway:400,300,500,700,900' rel='stylesheet' type='text/css'>
     <!-- Material Icons CSS -->
@@ -56,10 +58,9 @@
     <link rel="stylesheet" href="/assets/css/shortcodes/featured-box.css">
     <link href="/assets/css/skins/pre-school.css" rel="stylesheet">
 
+
     <link href="/assets/owl.carousel/assets/owl.carousel.css" rel="stylesheet">
     <link href="/assets/owl.carousel/assets/owl.theme.default.min.css" rel="stylesheet">
-
-
 
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -86,11 +87,13 @@
                     <!--mega menu start-->
                     <ul class="menuzord-menu pull-right light">
                         <li class="active"><a href="/">Home</a></li>
-                        <% if (user) { %>
+                        <% if (user && user.role==='siswa' ) { %>
                             <li class="active"><a href="/users" class="waves-effect waves-light">Profile</a></li>
-                            <% } else { %>
-                                <li><a href="/login" class="waves-effect waves-light">Login</a></li>
-                                <% } %>
+                            <% } else if (user && (user.role==='superadmin' || user.role==='admin' )) { %>
+                                <li class="active"><a href="/admin" class="waves-effect waves-light">Dashboard</a></li>
+                                <% }else{ %>
+                                    <li><a href="/login" class="waves-effect waves-light">Login</a></li>
+                                    <% } %>
                     </ul>
                     <!--mega menu end-->
 

@@ -1,34 +1,90 @@
 <%- include('../partials/users/_head') %>
+    <section class="section-padding grid-news">
+        <div class="container">
 
-    <%- include('../partials/users/_foot') %>
-        <!-- End Preloader -->
-        <div class="preloader-background">
-            <div class="preloader-wrapper big active">
-                <div id="loader-wrapper">
-                    <div id="loader"></div>
-                </div>
+            <div class="text-center mb-30">
+                <h2 class="section-title">Log Pengajuan Campaign</h2>
+                <p class="section-sub">Riwayat log pengajuan campaign anda. </p>
+                <p class="section-sub">
+                    <a href="/users/logCampaign?status=pending"
+                        class="<%= status === 'pending' ? 'text-blue-600 font-bold' : '' %>">Pending</a> |
+                    <a href="/users/logCampaign?status=aktif"
+                        class="<%= status === 'aktif' ? 'text-green-600 font-bold' : '' %>">Diterima</a> |
+                    <a href="/users/logCampaign?status=ditolak"
+                        class="<%= status === 'ditolak' ? 'text-red-600 font-bold' : '' %>">Ditolak</a> |
+                    <a href="/users/logCampaign" class="<%= !status ? 'text-gray-800 font-bold' : '' %>">Semua</a>
+                </p>
             </div>
-        </div>
+            <div class="row">
+                <% if (log.length===0) { %>
+                    <div class="col-12 text-center py-5">
+                        <% if (status==='pending' ) { %>
+                            <p class="text-gray-600 text-lg">Tidak ada campaign dengan status <strong>Pending</strong>.
+                            </p>
+                            <% } else if (status==='aktif' ) { %>
+                                <p class="text-gray-600 text-lg">Tidak ada campaign dengan status
+                                    <strong>Diterima</strong>.
+                                </p>
+                                <% } else if (status==='ditolak' ) { %>
+                                    <p class="text-gray-600 text-lg">Tidak ada campaign dengan status
+                                        <strong>Ditolak</strong>.
+                                    </p>
+                                    <% } else { %>
+                                        <p class="text-gray-600 text-lg">Belum ada campaign yang diajukan.</p>
+                                        <% } %>
+                    </div>
+                    <% } %>
+                        <% log.forEach(item=> { %>
+                            <div class="col-md-4">
+                                <article class="post-wrapper">
+                                    <div class="thumb-wrapper waves-effect waves-block waves-light">
+                                        <a href="#"><img src="/images/<%= item.foto_campaign %>" class="img-responsive"
+                                                alt=""></a>
+                                    </div><!-- .post-thumb -->
 
-        <!-- jQuery -->
-        <!-- Di bagian bawah sebelum </body>, hapus JS yang tidak digunakan -->
-        <script src="/assets/js/jquery-2.1.3.min.js"></script>
-        <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
-        <script src="/assets/materialize/js/materialize.min.js"></script>
-        <script src="/assets/js/menuzord.js"></script>
-        <script src="/assets/js/jquery.easing.min.js"></script>
-        <script src="/assets/js/jquery.sticky.min.js"></script>
-        <script src="/assets/js/smoothscroll.min.js"></script>
-        <script src="/assets/owl.carousel/owl.carousel.min.js"></script>
-        <script src="/assets/flexSlider/jquery.flexslider-min.js"></script>
-        <script src="/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
-        <script src="/assets/js/scripts.js"></script>
-        <script type="text/javascript">
-            $(window).load(function () {
-                $('.preloader-wrapper').fadeOut();
-                $('.preloader-background').delay(350).fadeOut('slow');
-            });
-        </script>
-        </body>
+                                    <div class="blog-content">
+                                        <header class="entry-header-wrapper">
+                                            <div class="entry-header">
+                                                <h2 class="entry-title"><a href="#">
+                                                        <%= item.judul_campaign %>
+                                                    </a></h2>
 
-        </html>
+                                                <div class="entry-meta">
+                                                    <ul class="list-inline">
+                                                        <li>
+                                                            <!-- <i class="fa fa-user"></i>Rp. -->
+                                                            <img src="/assets/img/target-money.png" alt="icon-target">
+                                                            Rp. <%= item.target_dana %>
+                                                                <!-- nantinya count yang berdonasi -->
+                                                        </li>
+                                                        <li>
+                                                            <i class="fa fa-clock-o"></i>
+                                                            <%= item.tanggal_berakhir %>
+                                                        </li>
+                                                    </ul>
+                                                </div><!-- .entry-meta -->
+                                            </div><!-- /.entry-header -->
+                                        </header><!-- /.entry-header-wrapper -->
+
+                                        <div class="entry-content">
+                                            Status: <%= item.status %>
+                                                <p>
+                                                    <%= item.deskripsi %>
+                                                </p>
+                                        </div><!-- .entry-content -->
+
+                                        <footer class="entry-footer">
+                                            <ul class="list-inline pull-left">
+                                                <li>Dana Terkumpul</li>
+                                            </ul>
+                                            <div class="readmore pull-right">
+                                                Rp. <%= item.dana_terkumpul %>
+                                            </div>
+                                        </footer>
+                                    </div><!-- /.blog-content -->
+                                </article><!-- /.post-wrapper -->
+                            </div><!-- /.col-md-4 -->
+                            <% }); %>
+            </div>
+    </section>
+    <%- include('../partials/users/_foot') %>

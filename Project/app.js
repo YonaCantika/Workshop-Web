@@ -14,6 +14,8 @@ var usersRouter = require('./routes/users');
 var loginRouter = require('./routes/login');
 var adminRouter = require('./routes/admin');
 var allRouter = require('./routes/all');
+var donasiRouter = require('./routes/donasi');
+var registerRouter = require('./routes/register');
 
 var app = express();
 
@@ -42,17 +44,25 @@ app.use(session({
 
 // Middleware global agar 'user' bisa diakses dari semua EJS (untuk navbar dll)
 app.use(function (req, res, next) {
+  res.locals.currentUrl = req.originalUrl;
   res.locals.user = req.session.user || null;
   next();
 });
 
 app.use(flash());
+app.use(function (req, res, next) {
+  res.locals.success = req.flash('success');
+  res.locals.error = req.flash('error');
+  next();
+});
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/login', loginRouter);
 app.use('/admin', adminRouter);
 app.use('/all', allRouter);
+app.use('/reg', registerRouter);
+app.use('/donasi', donasiRouter);
 
 // catch 404
 app.use(function (req, res, next) {

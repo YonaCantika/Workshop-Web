@@ -1,0 +1,26 @@
+<% if (success && success.length> 0) { %>
+    <div class="alert alert-success" id="flash-success">
+        <p>
+            <%= success[0] %>
+        </p>
+    </div>
+    <% } %>
+
+        <% if (error && error.length> 0) { %>
+            <div style="padding: 0 4rem 0 4rem;">
+                <div class="alert alert-danger" id="flash-error">
+                    <p>
+                        <%= error[0] %>
+                    </p>
+                </div>
+            </div>
+            <% } %>
+                <script>
+                    setTimeout(() => {
+                        const successAlert = document.getElementById('flash-success');
+                        const errorAlert = document.getElementById('flash-error');
+
+                        if (successAlert) successAlert.style.display = 'none';
+                        if (errorAlert) errorAlert.style.display = 'none';
+                    }, 5000); // 5 detik
+                </script>

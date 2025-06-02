@@ -2,32 +2,37 @@
     <!-- Grid News -->
     <section class="section-padding grid-news">
         <div class="container">
-
             <div class="text-center mb-30">
                 <h2 class="section-title">All Campaign</h2>
                 <p class="section-sub">Pilih dan salurkan donasi untuk campaign yang berarti bagi Anda. </p>
             </div>
-
+            <div class="text-center mb-30">
+                <% if (message) { %>
+                    <p class="section-sub" style="color: red;">
+                        <%= message %>
+                    </p>
+                    <% } else { %>
+            </div>
             <div class="row">
                 <% data.forEach(function(item) { %>
                     <div class="col-md-4">
                         <article class="post-wrapper">
                             <div class="thumb-wrapper waves-effect waves-block waves-light">
-                                <a href="#"><img src="assets/img/<%= item.foto_campaign %>" class="img-responsive"
-                                        alt=""></a>
+                                <a href="/all/detail/<%= item.id_campaign %>"><img
+                                        src="/images/<%= item.foto_campaign %>" class="img-responsive" alt=""></a>
                             </div><!-- .post-thumb -->
 
                             <div class="blog-content">
                                 <header class="entry-header-wrapper">
                                     <div class="entry-header">
-                                        <h2 class="entry-title"><a href="#">
+                                        <h2 class="entry-title"><a href="/all/detail/<%= item.id_campaign %>">
                                                 <%= item.judul %>
                                             </a></h2>
 
                                         <div class="entry-meta">
                                             <ul class="list-inline">
                                                 <li>
-                                                    <i class="fa fa-user"></i>Rp.
+                                                    <img src="/assets/img/target-money.png" alt="target" srcset=""> Rp.
                                                     <%= item.target_dana %>
                                                         <!-- nantinya count yang berdonasi -->
                                                 </li>
@@ -62,6 +67,7 @@
                         </article><!-- /.post-wrapper -->
                     </div><!-- /.col-md-4 -->
                     <% }); %>
+                        <% } %>
             </div><!-- /.row -->
 
         </div><!-- /.container -->

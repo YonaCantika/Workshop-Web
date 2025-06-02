@@ -1,0 +1,94 @@
+<%- include('../partials/users/_head') %>
+    <div style="padding: 10px;"></div>
+    <main class="profile-page" role="main">
+        <section aria-label="User profile information" class="left-panel">
+            <div class="profile-pic-wrapper">
+                <img alt="Smiling woman wearing a grey hijab and black headphones, resting her chin on her hand, with a bright window behind her"
+                    height="200"
+                    src="https://storage.googleapis.com/a1aa/image/a3e94f37-dc83-42d0-999d-ee0905fcbab2.jpg"
+                    width="200" />
+            </div>
+            <h1 class="name">
+                <%= user.nama %>
+            </h1>
+            <p class="username">
+                @<%= user.username %>
+            </p>
+            <!-- <button class="edit-profile-btn" type="button">
+                Edit profile
+            </button> -->
+            <a href="/users" class="logout-btn">
+                <i aria-hidden="true" class="fas fa-sign-out-alt"></i>
+                Back to profile
+            </a>
+
+        </section>
+        <section aria-label="Settings and other options" class="right-panel">
+            <%- include('../partials/_message') %>
+                <h2 class="section-title">
+                    Edit Profile
+                </h2>
+                <form action="/users/update-password/<%= user.id_user %>" method="post">
+                    <div class="row">
+                        <div class="col-md-6 mb-4 d-flex align-items-center">
+
+                            <div data-mdb-input-init class="form-outline datepicker w-100">
+                                <label for="birthdayDate" class="form-label" style="font-size: 1.1rem ;">Password
+                                    Baru</label>
+                                <input type="password" name="password" class="form-control form-control-lg"
+                                    id="birthdayDate" />
+                            </div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+
+                            <div data-mdb-input-init class="form-outline">
+                                <label class="form-label" for="daba" style="font-size: 1.1rem ;">Confirm
+                                    Password</label>
+                                <input type="password" name="confirm_password" id="daba" accept="image/*" required />
+                            </div>
+                        </div>
+
+                        <div class="col-md-12 mb-3">
+                            <a href="/users/edit-profile">Edit Profile?</a>
+                        </div>
+                    </div>
+                    <div class="mt-1 pt-1">
+                        <input type="submit" class="btn btn-primary btn-lg" value="submit"
+                            onclick="return confirm('Yakin ingin mengganti profile?')" />
+                    </div>
+                </form>
+        </section>
+    </main>
+
+    <%- include('../partials/users/_foot') %>
+        <!-- End Preloader -->
+        <div class="preloader-background">
+            <div class="preloader-wrapper big active">
+                <div id="loader-wrapper">
+                    <div id="loader"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <!-- Di bagian bawah sebelum </body>, hapus JS yang tidak digunakan -->
+        <script src="/assets/js/jquery-2.1.3.min.js"></script>
+        <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/assets/materialize/js/materialize.min.js"></script>
+        <script src="/assets/js/menuzord.js"></script>
+        <script src="/assets/js/jquery.easing.min.js"></script>
+        <script src="/assets/js/jquery.sticky.min.js"></script>
+        <script src="/assets/js/smoothscroll.min.js"></script>
+        <script src="/assets/owl.carousel/owl.carousel.min.js"></script>
+        <script src="/assets/flexSlider/jquery.flexslider-min.js"></script>
+        <script src="/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('.preloader-wrapper').fadeOut();
+                $('.preloader-background').delay(350).fadeOut('slow');
+            });
+        </script>
+        </body>
+
+        </html>

@@ -1,0 +1,102 @@
+<%- include('../../partials/master/_head') %>
+    <section class="section-padding grid-news">
+        <div class="container" style="padding: 0 11.5% 0 11.5%;">
+            <div class="flex items-center justify-center bg-gray-50">
+                <div class="bg-white shadow-md rounded-lg w-full p-8 mx-auto">
+                    <h1 class="text-3xl font-semibold text-gray-900 mb-6 flex items-center">
+                        <i class="fas fa-file-alt mr-3 text-blue-600"></i> New Penyaluran
+                    </h1>
+                    <form class="space-y-6" action="/admin/penyaluran/store" method="POST"
+                        enctype="multipart/form-data">
+                        <div>
+                            <label for="title" class="block text-sm font-medium text-gray-700 mb-1">
+                                Campaign Title <span class="text-red-500">*</span>
+                            </label>
+                            <select id="title" name="id_campaign" required
+                                class="block w-full rounded-md border border-gray-300 bg-white px-4 py-2 text-gray-900 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition">
+                                <option value="" disabled selected>Select a Campaign</option>
+                                <% if (message) { %>
+                                    <option value="" disabled selected>
+                                        <%= message %>
+                                    </option>
+                                    <% } else { %>
+                                        <% for(var i=0; i < data.length; i++){ %>
+                                            <option value="<%= data[i].id_campaign %>"
+                                                data-dana="<%= data[i].dana_terkumpul %>">
+                                                <%= data[i].judul %>
+                                            </option>
+                                            <% } } %>
+
+                            </select>
+                            <input type="text" id="title" name="dana_terkumpul" readonly placeholder="Dana Terkumpul"
+                                class="block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition" />
+                        </div>
+
+                        <div>
+                            <label for="dana" class="block text-sm font-medium text-gray-700 mb-1">
+                                Jumlah Donasi Disalurkan<span class="text-red-500">*</span>
+                            </label>
+                            <input type="text" id="dana" name="jumlah_disalurkan" required
+                                placeholder="Enter jumlah donasi disalurkan"
+                                class="block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition" />
+                        </div>
+
+
+                        <div>
+                            <label for="date" class="block text-sm font-medium text-gray-700 mb-1">
+                                Date Penyaluran <span class="text-red-500">*</span>
+                            </label>
+                            <input type="date" id="date" name="tanggal_penyaluran" required
+                                class="block w-full rounded-md border border-gray-300 px-4 py-2 text-gray-900 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition" />
+                        </div>
+
+                        <div>
+                            <label for="description" class="block text-sm font-medium text-gray-700 mb-1">
+                                Keterangan <span class="text-red-500">*</span>
+                            </label>
+                            <textarea id="description" name="keterangan" rows="4" required
+                                placeholder="Write information"
+                                class="block w-full h-32 rounded-md border border-gray-300 px-4 py-2 text-gray-900 placeholder-gray-400 focus:border-blue-600 focus:ring-1 focus:ring-blue-600 transition resize-y"></textarea>
+
+                        </div>
+
+                        <div>
+                            <label for="attachment" class="block text-sm font-medium text-gray-700 mb-1">
+                                Attachment
+                            </label>
+                            <input type="file" id="attachment" name="bukti_foto" accept="image/*"
+                                class="block w-full text-gray-700 file:border file:border-gray-300 file:rounded file:px-3 file:py-2 file:text-sm file:bg-gray-100 file:text-gray-700 hover:file:bg-gray-200 transition cursor-pointer" />
+                        </div>
+                        <!-- .pdf,.doc,.docx,.xls,.xlsx,.csv,.png,.jpg,.jpeg -->
+                        <div class="flex justify-between items-center pt-4 border-t border-gray-200">
+                            <a href="/admin/penyaluran"
+                                class="text-blue-600 hover:underline font-medium flex items-center">
+                                <i class="fas fa-arrow-left mr-2"></i> Back
+                            </a>
+                            <div class="flex space-x-4">
+                                <button type="reset"
+                                    class="px-6 py-2 rounded-md border border-gray-300 text-gray-700 hover:bg-gray-100 transition">
+                                    Reset
+                                </button>
+                                <button type="submit"
+                                    class="px-6 py-2 rounded-md bg-blue-600 text-white font-semibold hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-1 transition">
+                                    Submit Penyaluran
+                                </button>
+                            </div>
+                        </div>
+
+                    </form>
+                </div>
+
+            </div>
+    </section>
+
+    <script>
+        document.getElementById('title').addEventListener('change', function () {
+            const selectedOption = this.options[this.selectedIndex];
+            const danaTerkumpul = selectedOption.getAttribute('data-dana') || '';
+            document.querySelector('input[name="dana_terkumpul"]').value = danaTerkumpul;
+        });
+    </script>
+
+    <%- include('../../partials/master/_foot') %>

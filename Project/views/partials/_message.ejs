@@ -1,0 +1,23 @@
+<% if (success.length> 0) { %>
+    <div class="alert alert-success" id="flash-success">
+        <%= success[0] %>
+    </div>
+    <% } %>
+
+        <% if (error.length> 0) { %>
+            <div class="alert alert-danger" id="flash-error">
+                <%= error[0] %>
+            </div>
+            <% } %>
+
+                <script>
+                    setTimeout(() => {
+                        ['flash-success', 'flash-error'].forEach(id => {
+                            const el = document.getElementById(id);
+                            if (el) {
+                                el.classList.add('fade-out');
+                                setTimeout(() => el.style.display = 'none', 500); // tunggu animasi
+                            }
+                        });
+                    }, 5000);
+                </script>

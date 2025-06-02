@@ -1,0 +1,207 @@
+<%- include('partials/all_campaign/_head') %>
+    <!-- blog section start -->
+    <section class="blog-section section-padding" style="padding-top: 50px !important;">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-8">
+                    <%- include('partials/_message') %>
+                        <div class="posts-content single-post">
+                            <article class="post-wrapper">
+                                <header class="entry-header-wrapper clearfix">
+                                    <div class="author-thumb waves-effect waves-light">
+                                        <a href="#"><img src="/images/<%= rows.foto_campaign %>"
+                                                alt="Reliance Generation"></a>
+                                        <!-- Ganti logo pens nanti -->
+                                    </div>
+                                    <div class="entry-header">
+                                        <h2 class="entry-title">
+                                            <%= rows.judul %>
+                                        </h2>
+                                        <div class="entry-meta">
+                                            <ul class="list-inline">
+                                                <li>
+                                                    <img src="/assets/img/target-money.png" alt="target" srcset=""> Rp.
+                                                    <a href="#">
+                                                        <%= rows.target_dana %>
+                                                    </a>
+                                                </li>
+
+                                                <li>
+                                                    <i class="fa fa-clock-o"></i><a href="#">
+                                                        <%= rows.tanggal_dibuat %>
+                                                    </a>
+                                                </li>
+
+
+                                            </ul>
+                                        </div><!-- .entry-meta -->
+                                    </div>
+
+                                </header><!-- /.entry-header-wrapper -->
+
+                                <div class="thumb-wrapper">
+                                    <img src="/images/<%= rows.foto_campaign %>" class="img-responsive"
+                                        alt="Foto Campaign">
+                                </div><!-- .post-thumb -->
+
+
+                                <div class="entry-content">
+                                    <p>Tanggal Terakhir Campaign: <%= rows.tanggal_berakhir %>
+
+                                    </p>
+                                    <p>
+                                        <%= rows.deskripsi %>
+                                    </p>
+                                </div><!-- .entry-content -->
+
+
+                                <footer class="entry-footer">
+                                    <!-- <div class="post-tags">
+                      <span class="tags-links">
+                        <i class="fa fa-tags"></i><a href="#">Technology,</a> <a href="#" rel="tag">material design</a>
+                      </span>
+                    </div>  -->
+                                    <!-- .post-tags -->
+
+                                    <ul class="list-inline right share-post">
+                                        <a href="#" class="twitter-share-button btn-block" data-size="large"
+                                            data-text="klik untuk donasi - BANTU KAMI MENDIRIKAN ASRAMA UNTUK PANTI ASUHAN ASSOMADIYAH"
+                                            data-show-count="true">Tweet</a>
+                                        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+                                    </ul>
+                                </footer>
+                            </article><!-- /.post-wrapper -->
+                        </div><!-- /.posts-content -->
+                </div><!-- /.col-md-8 -->
+
+                <div class="col-md-4">
+                    <div class="tt-sidebar-wrapper" role="complementary">
+                        <div class="widget widget_search">
+                            <!-- <form role="search" method="get" class="search-form">
+                                <input type="text" class="form-control" value="" name="s" id="s"
+                                    placeholder="Write any keywords">
+                                <button type="submit"><i class="fa fa-search"></i></button>
+                            </form> -->
+                            <h2>Donasi Terkumpul</h>
+                                <h1 class="">Rp. <%= rows.dana_terkumpul %>
+                                </h1>
+                                <a href="/donasi/<%= rows.id_campaign %>"
+                                    class="btn waves-effect waves-light pink btn-block mb-20">Donasi
+                                    Sekarang</a>
+                        </div><!-- /.widget_search-->
+
+                        <b>Donatur (<%= donaturCount %>)</b>
+                        <div class="widget widget_tt_popular_post">
+                            <div class="tt-popular-post border-bottom-tab">
+                                <!-- Nav tabs -->
+                                <ul class="nav nav-tabs">
+                                    <li class="active">
+                                        <a href="#tt-popular-post-tab1" data-toggle="tab" aria-expanded="true">Waktu</a>
+                                    </li>
+                                    <li class="">
+                                        <a href="#tt-popular-post-tab2" data-toggle="tab"
+                                            aria-expanded="false">Penyaluran</a>
+                                    </li>
+                                </ul>
+
+                                <!-- Tab panes -->
+                                <div class="tab-content">
+                                    <!-- latest post tab -->
+                                    <div id="tt-popular-post-tab1" class="tab-pane fade active in">
+
+                                        <% name_donatur.forEach(function(item) { %>
+                                            <div class="media">
+                                                <a class="media-left" href="#">
+                                                    <!-- <img src="/assets/img/2.png" alt="Reliance Generation"> -->
+                                                </a>
+                                                <div class="media-body">
+                                                    <h4>
+                                                        <%= item.nama_donatur %> - Rp. <%= item.jumlah_donasi %>
+                                                    </h4>
+                                                    <small>
+                                                        <%= item.tanggal_donasi %>
+                                                    </small>
+                                                </div>
+                                            </div>
+                                            <% }); %>
+                                                <!-- <div class="media">
+                                            <a class="media-left" href="#">
+                                                <img src="/assets/img/al-mizan-1.jpg" alt="">
+                                            </a>
+                                            <div class="media-body">
+                                                <h4><a href="#">Berita Penyalura Campaign Ini</a></h4>
+                                            </div>
+                                        </div> -->
+                                    </div>
+
+                                    <!-- popular post tab-->
+                                    <div id="tt-popular-post-tab2" class="tab-pane fade">
+
+                                        <div class="media">
+                                            <a class="media-left" href="#">
+                                                <img src="assets/img/2.png" alt="Reliance Generation">
+                                            </a>
+
+                                            <div class="media-body">
+                                                <h4>Rp. 0</h4>
+                                                <h4>Anonim</h4>
+                                                <small>8 Apr 2017 17:30</small>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.tab-content -->
+                            </div><!-- /.tt-popular-post -->
+                        </div><!-- /.widget_tt_popular_post -->
+
+
+                    </div><!-- /.tt-sidebar-wrapper -->
+                </div><!-- /.col-md-4 -->
+
+            </div><!-- /.row -->
+        </div><!-- /.container -->
+    </section>
+    <!-- blog section end -->
+    <%- include('partials/users/_foot') %>
+        <!-- End Preloader -->
+        <div class="preloader-background">
+            <div class="preloader-wrapper big active">
+                <div id="loader-wrapper">
+                    <div id="loader"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- jQuery -->
+        <script src="/assets/js/jquery-2.1.3.min.js"></script>
+        <script src="/assets/bootstrap/js/bootstrap.min.js"></script>
+        <script src="/assets/materialize/js/materialize.min.js"></script>
+        <script src="/assets/js/menuzord.js"></script>
+        <script src="/assets/js/jquery.easing.min.js"></script>
+        <script src="/assets/js/jquery.sticky.min.js"></script>
+        <script src="/assets/js/smoothscroll.min.js"></script>
+        <script src="/assets/js/animated-headline.js"></script>
+        <script src="/assets/js/jquery.stellar.min.js"></script>
+        <script src="/assets/js/imagesloaded.js"></script>
+        <script src="/assets/js/jquery.inview.min.js"></script>
+        <script src="/assets/js/jquery.shuffle.min.js"></script>
+        <script src="/assets/owl.carousel/owl.carousel.min.js"></script>
+        <script src="/assets/flexSlider/jquery.flexslider-min.js"></script>
+        <script src="/assets/magnific-popup/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/js/scripts.js"></script>
+        <script type="text/javascript" src="/assets/js/SocialShare.min.js"></script>
+        <script async src="//platform.twitter.com/widgets.js" charset="utf-8"></script>
+        <script type="text/javascript">
+            $(window).load(function () {
+                $('.preloader-wrapper').fadeOut();
+                $('.preloader-background').delay(350).fadeOut('slow');
+            });
+        </script>
+        <script>
+            document.addEventListener('DOMContentLoaded', function () {
+                var modals = document.querySelectorAll('.modal');
+                M.Modal.init(modals);
+            });
+        </script>
+        </body>
+
+        </html>

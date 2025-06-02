@@ -1,0 +1,37 @@
+<!--header start-->
+<header id="header" class="tt-nav nav-border-bottom">
+
+    <div class="header-sticky light-header ">
+
+        <div class="container">
+
+            <div id="materialize-menu" class="menuzord">
+
+                <!--logo start-->
+                <a href="/" class="logo-brand">
+                    <img class="retina" src="/assets/img/reliance-black.png" alt="Reliance Generation" />
+                </a>
+                <!--logo end-->
+
+                <!--mega menu start-->
+                <ul class="menuzord-menu pull-right">
+                    <li class="<%= currentUrl === '/' ? 'active' : '' %>">
+                        <a href="/">Home</a>
+                    </li>
+
+                    <% if (user && user.role==='siswa' ) { %>
+                        <li class="<%= currentUrl.startsWith('/users') ? 'active' : '' %>">
+                            <a href="/users" class="waves-effect waves-light">Profile</a>
+                        </li>
+                        <% } else if (user && (user.role==='superadmin' || user.role==='admin' ) ) { %>
+                            <li class="<%= currentUrl.startsWith('/admin') ? 'active' : '' %>">
+                                <a href="/admin" class="waves-effect waves-light">Dashboard</a>
+                            </li>
+                            <% } %>
+                </ul>
+                <!--mega menu end-->
+            </div>
+        </div>
+    </div>
+</header>
+<!--header end-->

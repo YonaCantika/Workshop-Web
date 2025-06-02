@@ -81,27 +81,35 @@
         <p class="section-sub">Pilih dan salurkan donasi untuk campaign yang berarti bagi Anda. </p>
       </div>
 
+      <div class="text-center mb-20">
+        <% if (message) { %>
+          <p class="section-sub" style="color: red;">
+            <%= message %>
+          </p>
+          <% } else { %>
+      </div>
+
       <div class="row">
         <% data.forEach(function(item) { %>
           <div class="col-md-4">
             <article class="post-wrapper">
               <div class="thumb-wrapper waves-effect waves-block waves-light">
-                <a href="#"><img src="assets/img/<%= item.foto_campaign %>" class="img-responsive" alt=""></a>
+                <a href="/all/detail/<%= item.id_campaign %>"><img src="/images/<%= item.foto_campaign %>"
+                    class="img-responsive" alt=""></a>
               </div><!-- .post-thumb -->
 
               <div class="blog-content">
                 <header class="entry-header-wrapper">
                   <div class="entry-header">
-                    <h2 class="entry-title"><a href="#">
+                    <h2 class="entry-title"><a href="/all/detail/<%= item.id_campaign %>">
                         <%= item.judul %>
                       </a></h2>
 
                     <div class="entry-meta">
                       <ul class="list-inline">
                         <li>
-                          <i class="fa fa-user"></i>Rp.
+                          <img src="/assets/img/target-money.png" alt="target" srcset=""> Rp.
                           <%= item.target_dana %>
-                            <!-- nantinya count yang berdonasi -->
                         </li>
                         <li>
                           <i class="fa fa-clock-o"></i>
@@ -134,6 +142,7 @@
             </article><!-- /.post-wrapper -->
           </div><!-- /.col-md-4 -->
           <% }); %>
+            <% } %>
       </div><!-- /.row -->
 
     </div><!-- /.container -->
@@ -144,13 +153,12 @@
     <div class="container">
       <div class="text-center">
         <h1 class="text-uppercase text-bold font-30">Jadilah Donatur</h1>
-        <p class=" text-bold font-20">Bersedekah membuat kita semakin kaya </p>
+        <p class="text font-20">Bersedekah membuat kita semakin kaya </p>
         <a href="/all" class="btn btn-lg pink waves-effect waves-light">Show All Campaign</a>
       </div>
     </div><!-- /.container -->
   </section>
   <hr />
-
   <section class="section-padding gray-bg">
     <div class="container">
       <div class="row">
